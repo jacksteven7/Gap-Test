@@ -10,6 +10,7 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'mysql', '~> 2.9', '>= 2.9.1'
+gem 'slim', '~> 3.0', '>= 3.0.6'
 
 group :development, :test do
   gem 'byebug'
