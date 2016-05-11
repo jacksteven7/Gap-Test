@@ -18,13 +18,8 @@
 		 - @person.job = @person.job.presence || 'No Job'
 		 table.table
 		  tr
-		   th Personal Information
-		  tr
 		   td Job
 		   td= @person.job
-		  tr
-		   td Gender
-		   td= @person.gender.capitalize
 		  tr
 		   td Email
 		   td= @person.email
@@ -32,8 +27,11 @@
 		   td Birthdate
 		   td= @person.birthdate
 		  tr
+		   td Gender
+		   td= @person.gender.capitalize   
+		  tr
 		   td Picture
-		   td= @person.picture  
+		   td= @person.picture 
 	.row.biography
 	 h2 Biography
 	 p = @person.bio
