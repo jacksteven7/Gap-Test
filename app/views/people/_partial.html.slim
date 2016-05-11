@@ -1,0 +1,25 @@
+p#notice =notice
+
+= form_for(@person) do |f| 
+ .row
+ .col-md-6
+  .field
+   = f.text_field  :first_name,	:class => "form-control", :placeholder => "First Name"
+   = f.text_field  :last_name,	:class => "form-control", :placeholder => "Last Name"
+   = f.text_field  :email,		  :class => "form-control", :placeholder => "Email"
+   = f.text_field  :job,			  :class => "form-control", :placeholder => "Job"
+   = f.text_area   :bio,			  :class => "form-control", :placeholder => "Biography", rows: 6
+   = f.select      :gender, options_for_select([["Select Gender", ""],['Female', 'female'], ['Male', 'male']],:selected => @person.gender),{},:class => "form-control"
+   = f.text_field  :birthdate,	:class => "datepicker form-control", "data-provide" => 'datepicker', :placeholder => "Birthdate", "data-date-end-date" => "0d", "data-date-format" => "dd/mm/yyyy"
+   = f.text_field  :picture,		:class => "form-control", :placeholder => "pic"
+
+  .actions
+   =f.submit nil, :class => "btn btn-default"
+   = link_to ' Back', people_path
+ .col-md-6
+  -if @person.errors.any?
+   #error_explanation
+    h4 =pluralize(@person.errors.count, "error")
+    ul.list-group
+     -@person.errors.full_messages.each do |message|
+      li.list-group-item =message

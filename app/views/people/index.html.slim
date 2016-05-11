@@ -1,0 +1,32 @@
+p#notice =notice
+
+.container
+ 
+ .list-page 
+  .space
+  .space
+  div style="display: -webkit-box;"
+   h1 Persons
+   =link_to new_person_path do
+     span.glyphicon.glyphicon-plus style="padding-top: 37px;padding-left: 4px" title="Add Person"
+ -if !@people.empty? 
+  table.table
+    thead
+     tr
+      th width="40%" First name & Last name 
+      th width="20%" Email
+      th width="15%" Age
+      th width="15%" Action
+    tbody
+     -@people.each do |person|
+      tr
+       - now = Time.now.utc.to_date
+       - age = now.year - person.birthdate.year - (person.birthdate.to_date.change(:year => now.year) > now ? 1 : 0)
+
+       td= link_to person.first_name + " " + person.last_name, person
+       td= person.email
+       td= age.to_s
+       td= link_to @person, method: :delete, data: { confirm: 'Are you sure?' } do
+            span.glyphicon.glyphicon-trash title="Delete"
+ -else
+  p No people to show

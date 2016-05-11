@@ -1,0 +1,39 @@
+.container 
+ p#notice =notice
+ 
+ .space
+	.row.profile
+		.col-md-4
+			=image_tag("missing.png", class: "img-circle")
+
+		.col-md-6 
+		 div style="display: -webkit-box;"
+		  h1 = @person.first_name.concat(" ").concat(@person.last_name)
+		  =link_to edit_person_path(@person) do
+		   span.glyphicon.glyphicon-pencil style="padding-top: 37px;" title="Edit"
+		  =link_to people_path do
+		   span.glyphicon.glyphicon-remove style="padding-top: 37px;" title="Cancel"
+		  =link_to @person, method: :delete, data: { confirm: 'Are you sure?' } do
+		   span.glyphicon.glyphicon-trash style="padding-top: 37px;" title="Delete"
+		 - @person.job = @person.job.presence || 'No Job'
+		 table.table
+		  tr
+		   th Personal Information
+		  tr
+		   td Job
+		   td= @person.job
+		  tr
+		   td Gender
+		   td= @person.gender.capitalize
+		  tr
+		   td Email
+		   td= @person.email
+		  tr
+		   td Birthdate
+		   td= @person.birthdate
+		  tr
+		   td Picture
+		   td= @person.picture  
+	.row.biography
+	 h2 Biography
+	 p = @person.bio
