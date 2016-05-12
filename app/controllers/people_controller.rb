@@ -4,13 +4,14 @@ class PeopleController < ApplicationController
 
   def index
   	@people = Person.all
+    #@people = @people.sort_by! {|p| p.first_name}
   end
 
   def create
     @person = Person.new(person_params)
 
     if @person.save
-      #Send Email
+      PersonMailer.person_created(@person).deliver
       redirect_to @person, notice: 'Person was successfully created.'
     else
       render :new 
@@ -38,6 +39,7 @@ class PeopleController < ApplicationController
 
   def destroy
     if @person.destroy
+      PersonMailer.person_delated(@person).deliver
       redirect_to people_path, notice: 'Person deleted.'
     else
       redirect_to people_path, notice: 'Person could not be deleted.'
