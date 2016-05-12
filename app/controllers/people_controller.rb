@@ -3,15 +3,14 @@ class PeopleController < ApplicationController
   before_action :set_person, only: [:show, :edit, :update, :destroy]
 
   def index
-  	@people = Person.all
-    #@people = @people.sort_by! {|p| p.first_name}
+  	@people = Person.all.order(:first_name, :last_name)
   end
 
   def create
     @person = Person.new(person_params)
 
     if @person.save
-      PersonMailer.person_created(@person).deliver
+      PersonMailer.person_created(@person).deliver_now
       redirect_to @person, notice: 'Person was successfully created.'
     else
       render :new 
@@ -39,7 +38,7 @@ class PeopleController < ApplicationController
 
   def destroy
     if @person.destroy
-      PersonMailer.person_delated(@person).deliver
+      PersonMailer.person_delated(@person).deliver_now
       redirect_to people_path, notice: 'Person deleted.'
     else
       redirect_to people_path, notice: 'Person could not be deleted.'
