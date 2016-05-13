@@ -1,4 +1,4 @@
-source 'http://rubygems.org'
+source 'https://rubygems.org'
 
 gem 'rails', '4.2.5.1'
 gem 'sqlite3'
@@ -14,10 +14,13 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'slim', '~> 3.0', '>= 3.0.6'
 gem 'bootstrap-sass', '~> 3.3', '>= 3.3.6'
 gem 'bootstrap-datepicker-rails', '~> 1.6', '>= 1.6.0.1'
-
+gem 'resque', '~> 1.26', :require => "resque/server"
+gem 'random_data', '~> 1.6'
 
 group :test do 
- gem 'factory_girl', '~> 4.7'
+	
+	gem 'factory_girl_rails'
+	gem 'rspec'
 end
 
 

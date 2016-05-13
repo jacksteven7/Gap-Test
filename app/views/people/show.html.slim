@@ -4,8 +4,8 @@
  .space
 	.row.profile
 		.col-md-4
-			=image_tag("missing.png", class: "img-circle")
-
+			=image_tag(@person.picture, class: "img-circle", size: "300x300")
+			
 		.col-md-6 
 		 div style="display: -webkit-box;"
 		  h1 = @person.first_name.concat(" ").concat(@person.last_name)

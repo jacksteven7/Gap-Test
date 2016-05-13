@@ -11,8 +11,7 @@ p#notice =notice
    = f.text_area   :bio,			  :class => "form-control", :placeholder => "Biography", rows: 6
    = f.select      :gender, options_for_select([["Select Gender", ""],['Female', 'female'], ['Male', 'male']],:selected => @person.gender),{},:class => "form-control"
    = f.text_field  :birthdate,	:class => "datepicker form-control", "data-provide" => 'datepicker', :placeholder => "Birthdate", "data-date-end-date" => "0d", "data-date-format" => "dd/mm/yyyy"
-   = f.text_field  :picture,		:class => "form-control", :placeholder => "Picture"
-
+   
   .actions
    =f.submit nil, :class => "btn btn-default"
    = link_to ' Back', people_path

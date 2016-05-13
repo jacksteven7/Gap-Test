@@ -8,6 +8,14 @@ class Person < ActiveRecord::Base
 	validates :bio , length: { minimum: 30 }
 	validates :gender, :inclusion => { :in => %w( male female ), :message => "Please select a gender" }
 	validates :birthdate, presence: true#, :is_valid_date
-	validates :picture, format: { with: %r{\.jpg|png}i, message: "Please select a image file, Valid extensions(jpg,png)"}
+	
+	def name
+	 first_name + " "+ last_name	
+	end
 
+	def age
+		now = Time.now.utc.to_date
+		age = now.year - birthdate.year - (birthdate.to_date.change(:year => now.year) > now ? 1 : 0)
+		age
+	end
 end

@@ -20,12 +20,11 @@ p#notice =notice
     tbody
      -@people.each do |person|
       tr
-       - now = Time.now.utc.to_date
-       - age = now.year - person.birthdate.year - (person.birthdate.to_date.change(:year => now.year) > now ? 1 : 0)
 
-       td= link_to person.first_name + " " + person.last_name, person
+
+       td= link_to person.name, person
        td= person.email
-       td= age.to_s
+       td= person.age
        td= link_to person, method: :delete, data: { confirm: 'Are you sure?' } do
             span.glyphicon.glyphicon-trash title="Delete"
  -else

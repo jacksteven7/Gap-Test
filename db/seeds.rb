@@ -6,4 +6,10 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-Person.create(first_name: "Jack",last_name: "Ibarra",email: "Jack.Ibarra@gmail.com",job: "Java Developer",bio: "Biography Biography Biography Biography Biography ",gender: "male", birthdate: "Jack", picture: "Jack")
+10.times do
+	Person.create(first_name: Random.firstname,last_name: Random.lastname,email: Random.email ,job: "Developer",bio: Random.paragraphs(3) ,gender: "male", birthdate: Random.date(1000)-Random.new().rand(5000...10000), picture: "http://findicons.com/files/icons/1072/face_avatars/300/i05.png")
+end
+
+10.times do	
+	Person.create(first_name: Random.firstname,last_name: Random.lastname,email: Random.email ,job: "Developer",bio: Random.paragraphs(3) ,gender: "female", birthdate: Random.date(1000)-Random.new().rand(5000...10000), picture: "https://upload.wikimedia.org/wikipedia/commons/0/07/Avatar_girl_face.png")
+end-Random.new().rand(10000)

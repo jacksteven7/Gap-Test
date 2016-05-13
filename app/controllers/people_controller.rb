@@ -10,7 +10,7 @@ class PeopleController < ApplicationController
     @person = Person.new(person_params)
 
     if @person.save
-      PersonMailer.person_created(@person).deliver_now
+      Resque.enqueue(PersonMailerCreatedQueue,@person.id)
       redirect_to @person, notice: 'Person was successfully created.'
     else
       render :new 
@@ -38,7 +38,7 @@ class PeopleController < ApplicationController
 
   def destroy
     if @person.destroy
-      PersonMailer.person_delated(@person).deliver_now
+      Resque.enqueue(PersonMailerDeletedQueue,{ "name" => @person.name, "email" => @person.email })
       redirect_to people_path, notice: 'Person deleted.'
     else
       redirect_to people_path, notice: 'Person could not be deleted.'

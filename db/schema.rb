@@ -16,14 +16,14 @@ ActiveRecord::Schema.define(version: 20160510143434) do
   create_table "people", force: :cascade do |t|
     t.string   "first_name"
     t.string   "last_name"
-    t.string   "email",      limit: 254, null: false
+    t.string   "email",      limit: 254,                                 null: false
     t.string   "job"
     t.text     "bio"
     t.string   "gender"
     t.date     "birthdate"
-    t.string   "picture"
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.string   "picture",                default: "/assets/missing.png"
+    t.datetime "created_at",                                             null: false
+    t.datetime "updated_at",                                             null: false
   end
 
 end
