@@ -2,19 +2,45 @@ Preconditions
 
 * redis
 * redis-server
-* MySql
+* mysql-server
+* mysql-client
+* libmysqlclient-dev
 
 Run the next command:
 
+Clone the project 
+
+<tt> https://github.com/jacksteven7/Gap-Test.git <tt>
+
+Go into the created folder Gap-Test and execute	
 <tt> bundle install </tt>
+
+To configure the datebase run
+<tt> rake db:create </tt>
+
+Run migrations
 <tt> rake db:migrate </tt>
+
+To fill the data, Run
 <tt> rake db:seed </tt>
-<tt> rake resque:work QUEUE='*' </tt>
+
+
+In a separate tab, start redis-server, Run
+
 <tt> redis-server </tt>
 
+In a separate tab, Resque needs to listen the all queue events, Run
+<tt> rake resque:work QUEUE='*' </tt>
 
-rake test
+
+Start the application running in Gap-test
+
+<tt> rails s</tt>
 
 
-"/resque"  
+You can track the emails sent throught this address
+<tt>localhost:3000/resque/</tt>
 
+
+To execute the tests, Run
+<tt>rake test</<tt>
