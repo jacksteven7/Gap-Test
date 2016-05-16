@@ -10,7 +10,7 @@ Run the next command:
 
 Clone the project 
 
-<tt> https://github.com/jacksteven7/Gap-Test.git <tt>
+<tt> https://github.com/jacksteven7/Gap-Test.git </tt>
 
 Go into the created folder Gap-Test and execute	
 <tt> bundle install </tt>
@@ -43,4 +43,4 @@ You can track the emails sent throught this address
 
 
 To execute the tests, Run
-<tt>rake test</<tt>
+<tt>rake test</tt>
